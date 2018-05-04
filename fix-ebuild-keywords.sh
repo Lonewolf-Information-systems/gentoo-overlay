@@ -7,34 +7,45 @@
 
 !/bin/bash
 # **************** Change KEYWORDS= in ebuilds. to test them for AARCH64 ************
-startdirectory="./"
-if
-searchterm="KEYWORDS="~*""
-replaceterm="KEYWORDS="~*""
-elif 
-searchterm="KEYWORDS="*""
-replaceterm="KEYWORDS="*""
-elif 
-searchterm="KEYWORDS="~amd64""
-replaceterm="KEYWORDS=" ~amd64 ~arm ~arm64 ""
+find -L $CWD/. -type d  -name "*.ebuld" -exec sh -c '< _fixup_ebuild tee -a "$@"' -- {} +
+
 # **********************************************************
 
 echo "***************************************************"
 echo "* Search and Replace in KEYWORDS= in ebuilds. *"
 echo "* AARCH64/AMR64 Testing in Wholesale... . *"
 echo "***************************************************"
+#!bin/bash
+### KEYWORDS use cases varry wildly , find last "  replace " with ~arm64" to append would be usefull. 
 
-i=0; 
+fixup_ebuild(){
+if
+oldstring='KEYWORDS="~amd64"'
+elif
+oldstring='KEYWORDS="~amd64"'
+elif
+oldstring='KEYWORDS="~amd64"'
+elif
+oldstring='KEYWORDS="~amd64"'
+elif
+oldstring='KEYWORDS="~amd64"'
+elif
+oldstring='KEYWORDS="~amd64"'
+elif
+oldstring='KEYWORDS="~amd64"'
+elif
+oldstring='KEYWORDS="~amd64"'
+elif
+oldstring='KEYWORDS="~amd64"'
+elif
+oldstring='KEYWORDS="~amd64"'
+elif
+oldstring='KEYWORDS="~amd64"'
+then 
+newstring='KEYWORDS="~*"'
+grep -rl $oldstring /path/to/folder | xargs sed -i s/$oldstring/$newstring/g
+}
 
-  for file in $(grep -l -R $searchterm $startdirectory)
-    do
-      cp $file $file.bak
-      sed -e "s/$searchterm/$replaceterm/ig" $file > tempfile.tmp
-      mv tempfile.tmp $file
+## repoman time
 
-    let i++;
 
-      echo "Modified: " $file
-    done
-
-echo " *** All Done! *** Modified files:" $i
