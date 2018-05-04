@@ -6,14 +6,22 @@
 # *****************************************************************************************
 
 !/bin/bash
-# **************** Change Variables Here ************
+# **************** Change KEYWORDS= in ebuilds. to test them for AARCH64 ************
 startdirectory="./"
+if
+searchterm="KEYWORDS="~*""
+replaceterm="KEYWORDS="~*""
+elif 
+searchterm="KEYWORDS="*""
+replaceterm="KEYWORDS="*""
+elif 
 searchterm="KEYWORDS="~amd64""
-replaceterm="KEYWORDS="~x86 ~amd64 ~arm ~arm64 ""
+replaceterm="KEYWORDS=" ~amd64 ~arm ~arm64 ""
 # **********************************************************
 
 echo "***************************************************"
-echo "* Search and Replace in Files Version 01-Aug-2012 *"
+echo "* Search and Replace in KEYWORDS= in ebuilds. *"
+echo "* AARCH64/AMR64 Testing in Wholesale... . *"
 echo "***************************************************"
 
 i=0; 
